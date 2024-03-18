@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BOOKING APPIONMENT APP</h1>
+    <form action="/user/add-user" method="POST">
+        <div><label for="name">UserName</label></div>
+        <div><input type="text" placeholder="Enter Your Name" name="uname" id="uname" required></div>
+        <div><label for="phone">Phone Number</label></div>
+        <div><input type="number" placeholder="Enter Phone Number" name="phone" id="phone" required></div>
+        <div><label for="email">Email</label></div>
+        <div><input type="email" placeholder="Enter Email" name="email" id="email" required></div>
+        <div><button type="submit">Submit</button></div> 
+    </form>
+    <% if (users.length > 0){%>
+        <ul>
+            <%for (let items of users) {%>
+                <li id="<%=items.id%>"><%= items.UserName%> - <%=items.Email%></li>
+                <form action="/user/delete" method="POST">
+                     <input type="hidden" name="userId" value="<%=items.id%>">
+                     <button type="submit">Delete</button>
+                </form>
+            <%}%>
+        </ul>
+    <%}%>
+</body>
+</html>
